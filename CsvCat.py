@@ -9,28 +9,28 @@ import os
 
 i=0
 j = 0
-path='HotelImage'
+path='path'
 
+if __name__ == '__main__': 
+    imp = open(+path, 'r',encoding="utf-8")
+    #out = open('mycsv.csv' , 'wb')
+    #writer = csv.writer(out)
+    myCsv = csv.reader(imp, quoting=csv.QUOTE_NONE, quotechar=' ', delimiter=',')
+    if not os.path.isdir(path):
+        os.mkdir(path)
+    for row in myCsv:
+            if i == 0:
+                out = open(path+str(j)+'.csv','a+',encoding="utf-8", newline='')
+                writer = csv.writer(out)
+            else:     
+                writer.writerow(row)
+                #print(str(j)+':'+str(i))
+                
+            if i == 29999:
+                i = -1
+                j += 1
+            i+=1
 
-imp = open('C:\\Users\Administrator\Desktop\\'+path+'.csv', 'r',encoding="utf-8")
-#out = open('mycsv.csv' , 'wb')
-#writer = csv.writer(out)
-myCsv = csv.reader(imp, quoting=csv.QUOTE_NONE, quotechar=' ', delimiter=',')
-if not os.path.isdir('C:\\Users\Administrator\Desktop\\'+path):
-    os.mkdir('C:\\Users\Administrator\Desktop\\'+path)
-for row in myCsv:
-        if i == 0:
-            out = open('C:\\Users\Administrator\Desktop\\'+path+'\\'+path+str(j)+'.csv','a+',encoding="utf-8", newline='')
-            writer = csv.writer(out)
-        else:     
-            writer.writerow(row)
-            #print(str(j)+':'+str(i))
-            
-        if i == 29999:
-            i = -1
-            j += 1
-        i+=1
-
-print(j)
-imp.close()
-out.close()
+    print(j)
+    imp.close()
+    out.close()
